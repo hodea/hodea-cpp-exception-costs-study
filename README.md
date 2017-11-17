@@ -17,25 +17,63 @@ is undefined the implementation does not use exceptions.
 
 ## Comparison of the footprint
 
+The tables below compare the different compilers. All sizes are in [byte].
+
 ### arm-none-eabi-g++ v6.3.1, newlib nano
 
-without exceptions:
+Without exceptions:
 
-| Optimization | text      | data    | bss        |
-|--------------|-----------|---------|------------|
-|-O0           | 772 bytes | 8 bytes | 1568 bytes |
-|-O3           | 640 bytes | 8 bytes | 1568 bytes |
+| Optimization | text      | data    | bss        | text + data |
+|--------------|-----------|---------|------------|-------------|
+|-O0           | 772 bytes | 8 bytes | 1568 bytes | 780 bytes   |
+|-O3           | 640 bytes | 8 bytes | 1568 bytes | 672 bytes   |
 
 
-with exceptions enabled:
+With exceptions enabled:
 
-| Optimization | text        | data      | bss        |
-|--------------|-------------|-----------|------------|
-|-O0           | 10152 bytes | 120 bytes | 1612 bytes |
-|-O3           |  9976 bytes | 120 bytes | 1612 bytes |
+| Optimization | text        | data      | bss        | text + data |
+|--------------|-------------|-----------|------------|-------------|
+|-O0           | 10152 bytes | 120 bytes | 1612 bytes | 10272 bytes |
+|-O3           |  9976 bytes | 120 bytes | 1612 bytes | 10096 bytes |
 
 #### Note
 
 We recompiled the compiler toolchain, with exceptions enabled for
 libstdc++. Details are documented in the
 [hodea-lib Wiki](https://github.com/hodea/hodea-lib/wiki/GNU-Arm-Embedded-Toolchain).
+
+### armcc v5.06 update 5
+
+Without exceptions:
+
+| Optimization | Code | RO-data | RW-data | ZI-data | Flash |
+|--------------|------|---------|---------|---------|-------|
+|-O0           | 536  | 204     | 0       | 1632    | 740   |
+|-O3           | 456  | 204     | 0       | 1632    | 660   |
+
+
+With exceptions enabled:
+
+| Optimization | Code       | RO-data | RW-data | ZI-data | Flash |
+|--------------|------------|---------|-------- |---------|-------|
+|-O0           | 6632       | 932     | 0       | 1632    | 7564  |
+|-O3           | 6560       | 916     | 0       | 1632    | 7476  |
+
+### armcc v6.7
+
+Without exceptions:
+
+| Optimization | Code  | RO-data | RW-data | ZI-data | Flash |
+|--------------|-------|---------|---------|---------|-------|
+|-O0           | 1076  | 204     | 0       | 1632    | 1280  |
+|-O3           | 456   | 204     | 0       | 1632    | 660   |
+|-Oz           | 456   | 204     | 0       | 1632    | 660   |
+
+With exceptions enabled:
+
+| Optimization | Code       | RO-data | RW-data | ZI-data | Flash |
+|--------------|------------|---------|-------- |---------|-------|
+|-O0           | 13416      | 2516    | 8       | 2168    | 15940 |
+|-O3           | 13000      | 2492    | 8       | 2168    | 15500 |
+|-Oz           | 12956      | 2488    | 8       | 2168    | 15452 |
+

@@ -41,12 +41,8 @@ static void set_led(bool on)
         LED_GPIO->BRR |= (1U << LED_PIN);
 }
 
-//volatile int buf[1000] = {1, 2, 3};
-
 int main()
 {
-//    buf[0] = buf[0];
-
     init();
     for (;;) {
 #if defined CONFIG_USE_EXCEPTIONS
@@ -60,6 +56,10 @@ int main()
         set_led(is_button_pressed());
 #endif
     }
+    // gcc issues a warning when we omit the return, armcc complains if there
+    // is the return statement because the function never returns.
+#if defined __GNUC__
     return 0;
+#endif
 }
 
