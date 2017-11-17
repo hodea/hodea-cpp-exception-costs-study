@@ -21,7 +21,7 @@ The tables below compare the different compilers. All sizes are in [byte].
 
 ### arm-none-eabi-g++ v6.3.1, newlib nano
 
-#### Without exceptions:
+Without exceptions:
 
 | Optimization | Text      | Data    | Bss        | Flash |
 |--------------|-----------|---------|------------|-------|
@@ -30,7 +30,7 @@ The tables below compare the different compilers. All sizes are in [byte].
 |-Os           | 636       | 8       | 1568       | 644   |
 
 
-#### With exceptions:
+With exceptions:
 
 | Optimization | text        | data      | bss        | Flash |
 |--------------|-------------|-----------|------------|-------|
@@ -46,7 +46,7 @@ libstdc++. Details are documented in the
 
 ### armcc v5.06 update 5
 
-#### Without exceptions:
+Without exceptions:
 
 | Optimization | Code | RO-data | RW-data | ZI-data | Flash |
 |--------------|------|---------|---------|---------|-------|
@@ -54,7 +54,7 @@ libstdc++. Details are documented in the
 |-O3           | 456  | 204     | 0       | 1632    | 660   |
 
 
-#### With exceptions:
+With exceptions:
 
 | Optimization | Code       | RO-data | RW-data | ZI-data | Flash |
 |--------------|------------|---------|-------- |---------|-------|
@@ -71,7 +71,7 @@ Without exceptions:
 |-O3           | 456   | 204     | 0       | 1632    | 660   |
 |-Oz           | 456   | 204     | 0       | 1632    | 660   |
 
-#### With exceptions:
+With exceptions:
 
 | Optimization | Code       | RO-data | RW-data | ZI-data | Flash |
 |--------------|------------|---------|-------- |---------|-------|
