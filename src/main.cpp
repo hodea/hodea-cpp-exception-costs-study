@@ -1,3 +1,5 @@
+// Copyright (c) 2017, Franz Hollerer.
+// SPDX-License-Identifier: MIT
 
 #include <stm32f0xx.h>
 
